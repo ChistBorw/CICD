@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   lint:
@@ -44,13 +46,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests with coverage
-        run: pytest
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage.xml
+        run: pytest --cov=app tests
 
   build:
     name: Build
@@ -61,22 +57,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install build tool
-        run: pip install build
-
-      - name: Build Python package
-        run: python -m build
-
       - name: Build Docker image
-        run: docker build -t ci-github-actions-lab:latest .
-
-      - name: Upload Python package artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-package
-          path: dist/
+        run: docker build -t ci-github-actions-lab .
