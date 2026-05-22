@@ -46,7 +46,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests with coverage
-        run: pytest --cov=app tests
+        run: PYTHONPATH=. pytest --cov=app tests
 
   build:
     name: Build
