@@ -108,12 +108,3 @@ docker build -t ci-github-actions-lab:latest .
 8. Убедиться, что workflow `CI` запустился автоматически.
 9. Дождаться, пока этапы `Lint`, `Test`, `Build` станут зелеными.
 
-## Что показать преподавателю
-
-- Репозиторий на GitHub.
-- Файл `.github/workflows/ci.yml`.
-- Вкладку **Actions** с успешным запуском workflow.
-- Три этапа pipeline: `Lint`, `Test`, `Build`.
-- Тесты в папке `tests`.
-- Coverage-отчет как artifact `coverage-report`.
-- Собранный пакет как artifact `python-package`.
